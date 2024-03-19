@@ -2,6 +2,7 @@ from view.menu_v import MenuView
 from controller.tournament_c import TournamentController
 from controller.player_c import PlayerController
 
+
 class MenuController:
     """Directs the user to the section of their choice"""
 
@@ -14,10 +15,10 @@ class MenuController:
 
         try:
             if response == "1":
-                PlayerController.player_view_answer()
+                self.call_player_c()
 
             elif response == "2":
-                TournamentController.tournament_view_answer()
+                self.call_tournament_c()
 
             elif response == "3":
                 pass
@@ -29,3 +30,21 @@ class MenuController:
         except ValueError:
             print("ERREUR : Vous devez écrire 1, 2 ou 3")
             self.menu_view_answer()
+
+    @staticmethod
+    def call_player_c():
+
+        player = PlayerController()
+
+        return player.player_answer()
+
+    @staticmethod
+    def call_tournament_c():
+
+        tournament = TournamentController
+
+        return tournament.tournament_view_answer()
+
+
+menu = MenuController()
+menu.menu_view_answer()

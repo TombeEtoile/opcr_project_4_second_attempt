@@ -1,6 +1,9 @@
 class TournamentController:
 
-    def tournament_view_answer(self):
-
+    def __init__(self):
         pass
 
+    @staticmethod
+    def tournament_view_answer():
+
+        print("tournament_c")
