@@ -6,4 +6,4 @@ class TournamentController:
     @staticmethod
     def tournament_view_answer():
 
-        print("tournament_c")
+        pass

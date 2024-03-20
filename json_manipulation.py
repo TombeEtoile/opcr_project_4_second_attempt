@@ -8,6 +8,8 @@ def player_data():
         data = []
         json.dump(data, f, indent=2)
 
+        pass
+
 
 def tournament_data():
     """creat Json for tournaments"""
@@ -16,6 +18,4 @@ def tournament_data():
         data = []
         json.dump(data, f, indent=2)
 
-
-# player_data()
-# tournament_data()
+        pass

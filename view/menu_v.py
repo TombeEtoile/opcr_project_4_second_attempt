@@ -3,6 +3,9 @@ class MenuView:
 
     @staticmethod
     def menu_questions():
+
+        print("==========MENU GÉNÉRAL==========\n")
+
         user_input = input("Bienvenue dans notre programme de création de tournoi, "
                            "que voulez-vous faire ? \n"
                            "1 - Créer/modifier la fiche d'un joueur\n"
@@ -11,7 +14,3 @@ class MenuView:
                            "Sélectionnez 1, 2 ou 3 : ")
 
         return user_input
-
-
-menu = MenuView
-# menu.menu_questions()
