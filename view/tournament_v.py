@@ -4,7 +4,7 @@ class TournamentView:
     @staticmethod
     def tournament_questions():
 
-        print("==========INSTANCIATION D'UN TOURNOI==========\n")
+        print("\n==========INSTANCIATION D'UN TOURNOI==========\n")
 
         user_input = input("Ici vous pouvez agir sur chaque tournoi. "
                            "Que voulez-vous faire ? \n"

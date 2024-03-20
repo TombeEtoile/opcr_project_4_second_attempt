@@ -4,7 +4,7 @@ class MenuView:
     @staticmethod
     def menu_questions():
 
-        print("==========MENU GÉNÉRAL==========\n")
+        print("\n==========MENU GÉNÉRAL==========\n")
 
         user_input = input("Bienvenue dans notre programme de création de tournoi, "
                            "que voulez-vous faire ? \n"

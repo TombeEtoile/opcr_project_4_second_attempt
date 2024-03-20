@@ -8,7 +8,7 @@ class PlayerView:
     @staticmethod
     def player_questions():
 
-        print("==========INSTANCIATION D'UN JOUEUR==========\n")
+        print("\n==========INSTANCIATION D'UN JOUEUR==========\n")
 
         user_input = input("Ici vous pouvez agir sur chaque joueur. "
                            "Que voulez-vous faire ? \n"

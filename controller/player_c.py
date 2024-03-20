@@ -47,7 +47,9 @@ class PlayerController:
         new_player = PlayerInstantiate.get_player_data()
 
         with open("../player_data.json", "ab+") as f:
-            if f.tell() == 0:
+            if f.tell() == 2:
+                f.seek(-2, 2)
+                f.truncate()
                 f.write(b'[\n')
             else:
                 f.seek(-2, 2)
@@ -78,9 +80,7 @@ class PlayerController:
     def return_to_menu():
 
         pass
-        # menu = MenuController()
-        # menu.menu_answer()
 
 
 test = PlayerController()
-test.player_answer()
+test.add_player()
