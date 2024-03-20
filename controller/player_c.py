@@ -31,48 +31,42 @@ class PlayerController:
                 self.delete_player()
 
             elif response == "5":
-                """Closing registrations"""
-                # self.return_to_menu()
-                pass
-
-            elif response == "6":
                 """Return to menu"""
-                pass
+                self.return_to_menu()
 
             elif response != "1" or "2" or "3" or "4" or "5":
-                print("ERREUR : Vous devez écrire 1, 2, 3, 4, 5 ou 6")
+                print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
                 self.player_answer()
 
         except ValueError:
-            print("ERREUR : Vous devez écrire 1, 2, 3, 4, 5 ou 6")
+            print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
             self.player_answer()
 
     def add_player(self):
 
-        data = []
-
         new_player = PlayerInstantiate.get_player_data()
-        data.append(new_player)
 
-        with open("player_data.json", "w+") as f:
-            json.dump(data, f, indent=2)
+        with open("../player_data.json", "ab+") as f:
+            if f.tell() == 0:
+                f.write(b'[\n')
+            else:
+                f.seek(-2, 2)
+                f.truncate()
+                f.write(b',\n')
+            f.write(json.dumps(new_player, indent=2).encode())
+            f.write(b'\n]')
 
         self.player_answer()
-
-        return data
 
     def check_player_list(self):
 
-        print(self.add_player())
-        self.player_answer()
+        with open("../player_data.json", "r") as f:
+            player_dict = f.read()
+            player_data = json.loads(player_dict)
 
-    def add_player_to_json(self):
+            self.player_answer()
 
-        data = self.add_player()
-        with open("player_data.json", "w+") as f:
-            json.dump(data, f, indent=2)
-
-        self.player_answer()
+            return player_data
 
     def edit_player(self):
         pass
@@ -80,9 +74,13 @@ class PlayerController:
     def delete_player(self):
         pass
 
-    # @staticmethod
-    # def return_to_menu():
+    @staticmethod
+    def return_to_menu():
 
+        pass
         # menu = MenuController()
+        # menu.menu_answer()
 
-        # return menu.menu_view_answer()
+
+test = PlayerController()
+test.player_answer()

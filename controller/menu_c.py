@@ -9,7 +9,7 @@ class MenuController:
     def __init__(self):
         pass
 
-    def menu_view_answer(self):
+    def menu_answer(self):
 
         response = MenuView.menu_questions()
 
@@ -25,11 +25,11 @@ class MenuController:
 
             elif response != "1" or "2" or "3":
                 print("ERREUR : Vous devez écrire 1, 2 ou 3")
-                self.menu_view_answer()
+                self.menu_answer()
 
         except ValueError:
             print("ERREUR : Vous devez écrire 1, 2 ou 3")
-            self.menu_view_answer()
+            self.menu_answer()
 
     @staticmethod
     def call_player_c():
@@ -44,7 +44,3 @@ class MenuController:
         tournament = TournamentController
 
         return tournament.tournament_view_answer()
-
-
-menu = MenuController()
-menu.menu_view_answer()

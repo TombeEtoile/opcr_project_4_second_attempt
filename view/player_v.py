@@ -13,9 +13,8 @@ class PlayerView:
                            "2 - Voir la liste des joueurs\n"
                            "3 - Modifier\n"
                            "4 - Supprimer\n"
-                           "5 - cloturer l'inscription\n"
-                           "6 - Retourner au menu\n"
-                           "Sélectionnez 1, 2, 3, 4, 5 ou 6 : ")
+                           "5 - Retourner au menu\n"
+                           "Sélectionnez 1, 2, 3, 4 ou 5 : ")
 
         return user_input
 
