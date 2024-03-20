@@ -1,7 +1,7 @@
 import json
+from circular_import import TrafficCircle
 
 from view.player_v import PlayerView, PlayerInstantiate
-# from controller.menu_c import MenuController
 
 
 class PlayerController:
@@ -20,7 +20,7 @@ class PlayerController:
 
             elif response == "2":
                 """check list of player"""
-                self.check_player_list()
+                self.list_all_players()
 
             elif response == "3":
                 """modify player list"""
@@ -42,6 +42,14 @@ class PlayerController:
             print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
             self.player_answer()
 
+    @staticmethod
+    def load_data():
+
+        with open("../player_data.json") as f:
+            players = json.loads(f.read())
+
+            return players
+
     def add_player(self):
 
         new_player = PlayerInstantiate.get_player_data()
@@ -60,15 +68,21 @@ class PlayerController:
 
         self.player_answer()
 
-    def check_player_list(self):
-
-        with open("../player_data.json", "r") as f:
-            player_dict = f.read()
-            player_data = json.loads(player_dict)
-
-            self.player_answer()
-
-            return player_data
+    def list_all_players(self):
+        players = self.load_data()
+        for player in range(len(players)):
+            print("\n---Joueur n°{} - {} {}---\n"
+                  "-est né le {}\n"
+                  "-son ID est {}\n"
+                  "-possède {} points elo\n"
+                  "-possède actuellement {} points de tournoi".format(
+                   player + 1,
+                   players[player].get("Prenom"),
+                   players[player].get("Nom"),
+                   players[player].get("Date de naissance"),
+                   players[player].get("ID"),
+                   players[player].get("Elo"),
+                   players[player].get("Point")))
 
     def edit_player(self):
         pass
@@ -79,8 +93,11 @@ class PlayerController:
     @staticmethod
     def return_to_menu():
 
-        pass
+        menu = TrafficCircle()
+        menu.player_to_menu()
 
 
 test = PlayerController()
-test.add_player()
+test.player_answer()
+# test.add_player()
+# test.list_all_players()

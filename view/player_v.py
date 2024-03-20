@@ -149,6 +149,8 @@ class PlayerInstantiate:
     def get_player_data():
         """Creat player profil"""
 
+        print("---Ajout d'un joueur---\n")
+
         surname = PlayerInstantiate.surname()
         name = PlayerInstantiate.name()
         birthday = PlayerInstantiate.birthday()

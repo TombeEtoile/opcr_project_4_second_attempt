@@ -1,7 +1,15 @@
 class TournamentModel:
+    """define a tournament"""
 
-    def __init__(self, t_name, t_place, t_start, t_end, t_round_number, t_round_list, t_player_list, t_jury_remark):
-        """define a tournament"""
+    def __init__(self,
+                 t_name=str,
+                 t_place=str,
+                 t_start=str,
+                 t_end=str,
+                 t_round_number=int,
+                 t_round_list=int,
+                 t_player_list=list,
+                 t_jury_remark=str):
 
         self.name = t_name
         self.place = t_place
