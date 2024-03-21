@@ -41,6 +41,6 @@ class MenuController:
     @staticmethod
     def call_tournament_c():
 
-        tournament = TournamentController
+        tournament = TournamentController()
 
-        return tournament.tournament_view_answer()
+        return tournament.tournament_answer()

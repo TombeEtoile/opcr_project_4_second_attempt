@@ -1,7 +1,7 @@
 import json
-from circular_import import TrafficCircle
 
 from view.player_v import PlayerView, PlayerInstantiate
+from data.load_data import LoadPlayerData
 
 
 class PlayerController:
@@ -42,19 +42,11 @@ class PlayerController:
             print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
             self.player_answer()
 
-    @staticmethod
-    def load_data():
-
-        with open("../player_data.json") as f:
-            players = json.loads(f.read())
-
-            return players
-
     def add_player(self):
 
         new_player = PlayerInstantiate.get_player_data()
 
-        with open("../player_data.json", "ab+") as f:
+        with open("data/player_data.json", "ab+") as f:
             if f.tell() == 2:
                 f.seek(-2, 2)
                 f.truncate()
@@ -70,20 +62,21 @@ class PlayerController:
 
     def list_all_players(self):
 
-        players = self.load_data()
-        for player in range(len(players)):
+        players = LoadPlayerData.load_player_data()
+        print(players)
+        for number in range(len(players)):
             print("\n---Joueur n°{} - {} {}---\n"
                   "-est né le {}\n"
                   "-son ID est {}\n"
                   "-possède {} points elo\n"
                   "-possède actuellement {} points de tournoi".format(
-                   player + 1,
-                   players[player].get("Prenom"),
-                   players[player].get("Nom"),
-                   players[player].get("Date de naissance"),
-                   players[player].get("ID"),
-                   players[player].get("Elo"),
-                   players[player].get("Point")))
+                   number + 1,
+                   players[number].get("Prenom"),
+                   players[number].get("Nom"),
+                   players[number].get("Date de naissance"),
+                   players[number].get("ID"),
+                   players[number].get("Elo"),
+                   players[number].get("Point")))
 
         self.player_answer()
 
@@ -95,12 +88,10 @@ class PlayerController:
 
     @staticmethod
     def return_to_menu():
-
-        menu = TrafficCircle()
-        menu.player_to_menu()
+        pass
 
 
 test = PlayerController()
-test.player_answer()
+# test.player_answer()
 # test.add_player()
 # test.list_all_players()

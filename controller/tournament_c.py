@@ -1,6 +1,7 @@
 import json
 
 from view.tournament_v import TournamentView, TournamentInstantiate
+from data.load_data import LoadTournamentData
 
 
 class TournamentController:
@@ -41,19 +42,11 @@ class TournamentController:
             print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
             self.tournament_answer()
 
-    @staticmethod
-    def load_data():
-
-        with open("../tournament_data.json") as f:
-            players = json.loads(f.read())
-
-            return players
-
     def add_tournament(self):
 
         new_tournament = TournamentInstantiate.get_tournament_data()
 
-        with open("../tournament_data.json", "ab+") as f:
+        with open("data/tournament_data.json", "ab+") as f:
             if f.tell() == 2:
                 f.seek(-2, 2)
                 f.truncate()
@@ -69,7 +62,7 @@ class TournamentController:
 
     def list_all_tournament(self):
 
-        tournaments = self.load_data()
+        tournaments = LoadTournamentData.load_tournament_data()
         for tournament in range(len(tournaments)):
             print("\n---Tournoi n°{} - {}---\n"
                   "-aura lieux en {}\n"
@@ -94,7 +87,3 @@ class TournamentController:
 
     def return_to_menu(self):
         pass
-
-
-test = TournamentController()
-test.tournament_answer()

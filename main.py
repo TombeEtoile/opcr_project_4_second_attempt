@@ -1,20 +1,15 @@
-# import json_manipulation
-import json_manipulation
-# from controller.menu_c import MenuController
+import setting_program
+from controller.menu_c import MenuController
 
 
 def main():
 
-    creat_json = json_manipulation.SetUpJson()
+    creat_json = program_loading.SetUpJson()
     creat_json.load_json()
+    """Creates an empty Json for players_data, tournaments_data, all_rounds_data"""
 
-    # creat_json.player_data()
-    """Creates an empty Json for players"""
-    # creat_json.tournament_data()
-    """Creates an empty Json for Tournaments"""
-
-    # menu = MenuController()
-    # menu.menu_answer()
+    calling_menu = MenuController()
+    calling_menu.menu_answer()
     """Calls up the general menu"""
 
 
