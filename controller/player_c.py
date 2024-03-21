@@ -69,6 +69,7 @@ class PlayerController:
         self.player_answer()
 
     def list_all_players(self):
+
         players = self.load_data()
         for player in range(len(players)):
             print("\n---Joueur n°{} - {} {}---\n"
@@ -83,6 +84,8 @@ class PlayerController:
                    players[player].get("ID"),
                    players[player].get("Elo"),
                    players[player].get("Point")))
+
+        self.player_answer()
 
     def edit_player(self):
         pass
