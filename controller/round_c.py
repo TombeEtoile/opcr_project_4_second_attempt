@@ -1,36 +1,37 @@
 import json
 
-from view.match_v import MatchView
-from controller.round_c import RoundController
-from data.load_data_match import LoadPlayerData, LoadRoundData
+from view.round_v import RoundView
+from data.load_data_match import LoadPlayerData
 
 
-class MatchController:
+class RoundController:
 
     def __init__(self):
         pass
 
-    def match_answer(self):
+    def round_answer(self):
 
-        answer = MatchView.match_questions()
+        answer = RoundView.round_questions()
 
         try:
             if answer == "1":
-                LoadPlayerData.list_player_by_elo()
-                self.match_answer()
+                self.round_1_inscription()
+                self.round_answer()
 
             elif answer == "2":
-                LoadPlayerData.list_player_by_point()
-                self.match_answer()
+                self.round_2_inscription()
+                self.round_answer()
 
             elif answer == "3":
-                self.elo_pair_to_json()
-                print(LoadRoundData.see_round_1())
-                self.match_answer()
+                self.round_3_inscription()
+                self.round_answer()
 
             elif answer == "4":
-                RoundController().round_answer()
-                self.match_answer()
+                self.round_4_inscription()
+                self.round_answer()
+
+            elif answer == "5":
+                pass
 
             elif answer != "1" or "2" or "3" or "4":
                 print("ERREUR : Votre réponse n'est pas valable.")
@@ -57,32 +58,8 @@ class MatchController:
 
         return pairs
 
-    @staticmethod
-    def point_pair():
-
-        pairs = []
-        player_list = LoadPlayerData.tri_player_by_point()
-        player_list_min = 0
-        player_list_max = len(player_list) - 1
-        possible_pairs = int(len(player_list) / 2)
-
-        for x in range(possible_pairs):
-            pairs.append((player_list[player_list_min], player_list[player_list_max]))
-            possible_pairs -= 1
-            player_list_min += 1
-            player_list_max -= 1
-
-        return pairs
-
-    def elo_pair_to_json(self):
-
-        with open("data/round_1_data.json", "w") as f:
-            json.dump(self.elo_pair(), f, indent=2)
-
-
-"""
     def result_round(self):
-        # Round 1 results
+        """Round 1 results"""
 
         winner = []
         loser = []
@@ -128,7 +105,7 @@ class MatchController:
         return winner, loser, equality
 
     def list_for_point_distribution(self):
-        # Création de listes contenant les victoires, défaites et égalités
+        """Création de listes contenant les victoires, défaites et égalités"""
 
         vote = self.result_round()
 
@@ -137,8 +114,8 @@ class MatchController:
         return round_1_result
 
     def point_distribution(self):
-        # Distribution des points
-        
+        """Distribution des points"""
+
         result_match = self.list_for_point_distribution()
         all_players = LoadPlayerData.load_player_data()
 
@@ -163,33 +140,25 @@ class MatchController:
         self.point_distribution()
         with open("data/round_1_data.json", "w") as f:
             json.dump(self.elo_pair(), f, indent=2)
-        self.match_answer()
-        
+        self.round_answer()
+
     def round_2_inscription(self):
 
         self.point_distribution()
         with open("data/round_2_data.json", "w") as f:
             json.dump(self.elo_pair(), f, indent=2)
-        self.match_answer()
-        
+        self.round_answer()
+
     def round_3_inscription(self):
 
         self.point_distribution()
         with open("data/round_3_data.json", "w") as f:
             json.dump(self.elo_pair(), f, indent=2)
-        self.match_answer()
+        self.round_answer()
 
     def round_4_inscription(self):
 
         self.point_distribution()
         with open("data/round_4_data.json", "w") as f:
             json.dump(self.elo_pair(), f, indent=2)
-        self.match_answer()
-"""
-
-answer = MatchController()
-# answer.elo_pair_to_json()
-# answer.match_answer()
-# answer.result_round_1()
-# print(answer.list_for_point_distribution())
-# answer.point_distribution()
+        self.round_answer()

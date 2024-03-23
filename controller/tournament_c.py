@@ -1,7 +1,6 @@
 import json
 
 from view.tournament_v import TournamentView, TournamentInstantiate
-from data.load_data import LoadTournamentData
 
 
 class TournamentController:
@@ -24,15 +23,21 @@ class TournamentController:
 
             elif response == "3":
                 """modify player list"""
-                self.edit_tournament()
+                # self.edit_tournament()
+                print("Pas encore fait")
+                self.tournament_answer()
 
             elif response == "4":
                 """delete player in the list"""
-                self.delete_tournament()
+                # self.delete_tournament()
+                print("Pas encore fait")
+                self.tournament_answer()
 
             elif response == "5":
                 """Return to menu"""
-                self.return_to_menu()
+                # self.return_to_menu()
+                print("Pas encore fait, il faut relancer le programme lol")
+                self.tournament_answer()
 
             elif response != "1" or "2" or "3" or "4" or "5":
                 print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
@@ -41,6 +46,14 @@ class TournamentController:
         except ValueError:
             print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
             self.tournament_answer()
+
+    @staticmethod
+    def load_tournament_data():
+
+        with open("data/tournament_data.json") as f:
+            players = json.loads(f.read())
+
+            return players
 
     def add_tournament(self):
 
@@ -62,7 +75,7 @@ class TournamentController:
 
     def list_all_tournament(self):
 
-        tournaments = LoadTournamentData.load_tournament_data()
+        tournaments = self.load_tournament_data()
         for tournament in range(len(tournaments)):
             print("\n---Tournoi n°{} - {}---\n"
                   "-aura lieux en {}\n"

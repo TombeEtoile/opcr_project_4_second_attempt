@@ -4,7 +4,7 @@ from controller.menu_c import MenuController
 
 def main():
 
-    creat_json = program_loading.SetUpJson()
+    creat_json = setting_program.SetUpJson()
     creat_json.load_json()
     """Creates an empty Json for players_data, tournaments_data, all_rounds_data"""
 

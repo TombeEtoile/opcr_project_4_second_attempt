@@ -1,6 +1,7 @@
 from view.menu_v import MenuView
 from controller.tournament_c import TournamentController
 from controller.player_c import PlayerController
+from controller.match_c import MatchController
 
 
 class MenuController:
@@ -21,10 +22,13 @@ class MenuController:
                 self.call_tournament_c()
 
             elif response == "3":
+                self.call_match_c()
+
+            elif response == "4":
                 pass
 
-            elif response != "1" or "2" or "3":
-                print("ERREUR : Vous devez écrire 1, 2 ou 3")
+            elif response != "1" or "2" or "3" or "4":
+                print("ERREUR : Vous devez écrire 1, 2, 3 ou 4")
                 self.menu_answer()
 
         except ValueError:
@@ -44,3 +48,10 @@ class MenuController:
         tournament = TournamentController()
 
         return tournament.tournament_answer()
+
+    @staticmethod
+    def call_match_c():
+
+        match = MatchController()
+
+        return match.match_answer()
