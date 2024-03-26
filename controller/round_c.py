@@ -1,7 +1,53 @@
 import json
 
-from view.round_v import RoundView
+from view.round_v import RoundView, PreRoundView
 from data.load_data_match import LoadPlayerData
+
+
+class PreRoundController:
+
+    def __init__(self):
+        pass
+
+    def pre_round_answer(self):
+
+        answer = PreRoundView().pre_round_questions()
+
+        tournament = self.load_tournament_name()
+        all_tournaments = int(len(self.load_tournament_name())) - int(len(self.load_tournament_name()))
+
+        try:
+            if answer == tournament[all_tournaments]:
+                print("tournois 1")
+
+            elif answer == tournament[all_tournaments + 1]:
+                print("tournois 2")
+
+            else:
+                print("ERREUR : Votre réponse n'est pas valable.")
+                self.pre_round_answer()
+
+        except ValueError:
+            print("ERREUR : Votre réponse n'est pas valable.")
+            self.pre_round_answer()
+
+    @staticmethod
+    def load_tournament_data():
+
+        with open("../data/tournament_data.json") as f:
+            tournaments = json.loads(f.read())
+
+            return tournaments
+
+    def load_tournament_name(self):
+
+        tournaments_name = []
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            tournaments_name.append(tournament["Nom"])
+
+        return tournaments_name
 
 
 class RoundController:
@@ -35,11 +81,11 @@ class RoundController:
 
             elif answer != "1" or "2" or "3" or "4":
                 print("ERREUR : Votre réponse n'est pas valable.")
-                self.match_answer()
+                self.round_answer()
 
         except TypeError or ValueError:
             print("ERREUR : Votre réponse n'est pas valable.")
-            self.match_answer()
+            self.round_answer()
 
     @staticmethod
     def elo_pair():

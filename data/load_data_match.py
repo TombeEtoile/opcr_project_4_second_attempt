@@ -79,9 +79,19 @@ class LoadTournamentData:
     def load_tournament_data():
 
         with open("data/tournament_data.json") as f:
-            players = json.loads(f.read())
+            tournaments = json.loads(f.read())
 
-            return players
+            return tournaments
+
+    def load_tournament_name(self):
+
+        tournaments_name = []
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            tournaments_name.append(tournament["Nom"])
+
+        return tournaments_name
 
 
 class LoadRoundData:

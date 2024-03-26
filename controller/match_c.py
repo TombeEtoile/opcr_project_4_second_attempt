@@ -1,8 +1,8 @@
 import json
 
 from view.match_v import MatchView
-from controller.round_c import RoundController
-from data.load_data_match import LoadPlayerData, LoadRoundData
+from controller.round_c import PreRoundController
+from data.load_data_match import LoadPlayerData
 
 
 class MatchController:
@@ -24,15 +24,9 @@ class MatchController:
                 self.match_answer()
 
             elif answer == "3":
-                self.elo_pair_to_json()
-                print(LoadRoundData.see_round_1())
-                self.match_answer()
+                self.call_round_c()
 
-            elif answer == "4":
-                RoundController().round_answer()
-                self.match_answer()
-
-            elif answer != "1" or "2" or "3" or "4":
+            elif answer != "1" or "2" or "3":
                 print("ERREUR : Votre réponse n'est pas valable.")
                 self.match_answer()
 
@@ -40,6 +34,18 @@ class MatchController:
             print("ERREUR : Votre réponse n'est pas valable.")
             self.match_answer()
 
+    @staticmethod
+    def call_round_c():
+
+        round = PreRoundController()
+
+        return round.pre_round_answer()
+
+
+test = MatchController()
+# test.match_answer()
+
+"""
     @staticmethod
     def elo_pair():
 
@@ -79,8 +85,6 @@ class MatchController:
         with open("data/round_1_data.json", "w") as f:
             json.dump(self.elo_pair(), f, indent=2)
 
-
-"""
     def result_round(self):
         # Round 1 results
 
@@ -186,10 +190,3 @@ class MatchController:
             json.dump(self.elo_pair(), f, indent=2)
         self.match_answer()
 """
-
-answer = MatchController()
-# answer.elo_pair_to_json()
-# answer.match_answer()
-# answer.result_round_1()
-# print(answer.list_for_point_distribution())
-# answer.point_distribution()

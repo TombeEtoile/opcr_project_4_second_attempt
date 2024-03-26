@@ -138,7 +138,7 @@ class TournamentInstantiate:
                 print("ERREUR : le tournoi doit faire maximum 4 rounds")
                 TournamentInstantiate.round_number()
 
-            else:
+            elif "0" < user_input < "5":
                 return user_input
 
         except ValueError:
@@ -171,5 +171,8 @@ class TournamentInstantiate:
                       "Nombre de rounds": round_number,
                       "Remarque du jury": jury_remark}
 
-        print(tournament)
         return tournament
+
+
+test = TournamentInstantiate
+# test.get_tournament_data()

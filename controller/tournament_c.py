@@ -57,21 +57,33 @@ class TournamentController:
 
     def add_tournament(self):
 
+        print(len(self.load_tournament_data()))
         new_tournament = TournamentInstantiate.get_tournament_data()
 
-        with open("data/tournament_data.json", "ab+") as f:
-            if f.tell() == 2:
-                f.seek(-2, 2)
-                f.truncate()
-                f.write(b'[\n')
-            else:
-                f.seek(-2, 2)
-                f.truncate()
-                f.write(b',\n')
-            f.write(json.dumps(new_tournament, indent=2).encode())
-            f.write(b'\n]')
+        try:
+            if len(self.load_tournament_data()) < 3:
+                with open("data/tournament_data.json", "ab+") as f:
+                    if f.tell() == 2:
+                        f.seek(-2, 2)
+                        f.truncate()
+                        f.write(b'[\n')
+                    else:
+                        f.seek(-2, 2)
+                        f.truncate()
+                        f.write(b',\n')
+                    f.write(json.dumps(new_tournament, indent=2).encode())
+                    f.write(b'\n]')
+                self.tournament_answer()
 
-        self.tournament_answer()
+            elif len(self.load_tournament_data()) > 2:
+                print("Le nombre maximum de tournois est de 3.\n"
+                      "Veuillez clôturer un tournoi avant d'en lancer un autre.")
+                self.tournament_answer()
+
+        except ValueError:
+            print("Le nombre maximum de tournois est de 3.\n"
+                  "Veuillez clôturer un tournoi avant d'en lancer un autre.")
+            self.tournament_answer()
 
     def list_all_tournament(self):
 
@@ -100,3 +112,7 @@ class TournamentController:
 
     def return_to_menu(self):
         pass
+
+
+test = TournamentController()
+# test.add_tournament()

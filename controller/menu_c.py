@@ -1,3 +1,6 @@
+import json
+import os
+
 from view.menu_v import MenuView
 from controller.tournament_c import TournamentController
 from controller.player_c import PlayerController
@@ -22,6 +25,9 @@ class MenuController:
                 self.call_tournament_c()
 
             elif response == "3":
+                folder_and_file = CreatingFolderAndFile()
+                folder_and_file.folder_creation()
+                folder_and_file.json_creation()
                 self.call_match_c()
 
             elif response == "4":
@@ -55,3 +61,88 @@ class MenuController:
         match = MatchController()
 
         return match.match_answer()
+
+
+class CreatingFolderAndFile:
+
+    def __init__(self):
+
+        pass
+
+    @staticmethod
+    def load_tournament_data():
+
+        with open("data/tournament_data.json") as f:
+            tournaments = json.loads(f.read())
+
+            return tournaments
+
+    def load_tournament_name(self):
+
+        tournaments_name = []
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            tournaments_name.append(tournament["Nom"])
+
+        return tournaments_name
+
+    def folder_creation(self):
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            name = tournament["Nom"]
+            lower_name = name.lower()
+            cleaner_name = (lower_name
+                            .replace(" ", "_")
+                            .replace("'", "_")
+                            .replace("-", "_")
+                            .replace(".", "")
+                            .replace("é", "e")
+                            .replace("è", "e")
+                            .replace("ê", "e")
+                            .replace("ô", "o")
+                            .replace("à", "a")
+                            .replace("â", "a"))
+
+            if not os.path.exists(f"data/{cleaner_name}"):
+                os.mkdir(f"data/{cleaner_name}")
+                print(f"- Création du dossier {cleaner_name}")
+
+            elif os.path.exists(f"data/{cleaner_name}"):
+                print(f"- Le dossier '{cleaner_name}' existe déjà")
+
+    def json_creation(self):
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            name = tournament["Nom"]
+            lower_name = name.lower()
+            cleaner_name = (lower_name
+                            .replace(" ", "_")
+                            .replace("'", "_")
+                            .replace("-", "_")
+                            .replace(".", "")
+                            .replace("é", "e")
+                            .replace("è", "e")
+                            .replace("ê", "e")
+                            .replace("ô", "o")
+                            .replace("à", "a")
+                            .replace("â", "a"))
+
+            round_number = tournament["Nombre de rounds"]
+            round_min = int(round_number) // int(round_number)
+
+            for tournament_bis in range(int(round_number)):
+
+                if not os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}"):
+                    with open(f"data/{cleaner_name}/{cleaner_name}_{round_min}", "w") as f:
+                        data = []
+                        json.dump(data, f, indent=2)
+
+                        print(f"- Création du fichier {cleaner_name}_{round_min}")
+
+                elif os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}"):
+                    print(f"- Le fichier '{cleaner_name}/{cleaner_name}_{round_min}' existe déjà")
+
+                round_min += 1

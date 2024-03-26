@@ -1,3 +1,39 @@
+import json
+
+
+class PreRoundView:
+
+    def __init__(self):
+        pass
+
+    def pre_round_questions(self):
+        """Ask for what the user want to for their matchs and rounds"""
+
+        print("\n==========CHOIX DU TOURNOIS À COMPLÉTER==========\n")
+
+        user_input = input("Choisissez le tournoi que vous voulez compléter parmi cette liste :\n"
+                           f"{self.load_tournament_name()}\n"
+                           "Copiez-collez le tournoi de votre choix : ")
+
+        return user_input
+
+    @staticmethod
+    def load_tournament_data():
+        with open("../data/tournament_data.json") as f:
+            tournaments = json.loads(f.read())
+
+            return tournaments
+
+    def load_tournament_name(self):
+        tournaments_name = []
+
+        tournaments = self.load_tournament_data()
+        for tournament in tournaments:
+            tournaments_name.append(tournament["Nom"])
+
+        return tournaments_name
+
+
 class RoundView:
 
     def __init__(self):
