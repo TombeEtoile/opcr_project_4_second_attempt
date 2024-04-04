@@ -19,10 +19,6 @@ class SetUpJson:
             if user_input == "1":
                 self.player_data()
                 self.tournament_data()
-                self.round_1_data()
-                self.round_2_data()
-                self.round_3_data()
-                self.round_4_data()
 
             elif user_input == "2":
                 pass
@@ -42,6 +38,7 @@ class SetUpJson:
         with open("data/player_data.json", "w+") as f:
             data = []
             json.dump(data, f, indent=2)
+            f.flush()
 
     @staticmethod
     def tournament_data():
@@ -50,35 +47,4 @@ class SetUpJson:
         with open("data/tournament_data.json", "w+") as f:
             data = []
             json.dump(data, f, indent=2)
-
-    @staticmethod
-    def round_1_data():
-        """creat Json for tournaments"""
-
-        with open("data/round_1_data.json", "w+") as f:
-            data = []
-            json.dump(data, f, indent=2)
-
-    @staticmethod
-    def round_2_data():
-        """creat Json for tournaments"""
-
-        with open("data/round_2_data.json", "w+") as f:
-            data = []
-            json.dump(data, f, indent=2)
-
-    @staticmethod
-    def round_3_data():
-        """creat Json for tournaments"""
-
-        with open("data/round_3_data.json", "w+") as f:
-            data = []
-            json.dump(data, f, indent=2)
-
-    @staticmethod
-    def round_4_data():
-        """creat Json for tournaments"""
-
-        with open("data/round_4_data.json", "w+") as f:
-            data = []
-            json.dump(data, f, indent=2)
+            f.flush()

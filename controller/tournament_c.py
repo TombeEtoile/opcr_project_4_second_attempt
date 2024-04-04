@@ -22,22 +22,18 @@ class TournamentController:
                 self.list_all_tournament()
 
             elif response == "3":
-                """modify player list"""
-                # self.edit_tournament()
-                print("Pas encore fait")
+                """modify tournament list"""
+                self.edit_tournament()
                 self.tournament_answer()
 
             elif response == "4":
-                """delete player in the list"""
-                # self.delete_tournament()
-                print("Pas encore fait")
+                """delete tournament in the list"""
+                self.delete_tournament()
                 self.tournament_answer()
 
             elif response == "5":
                 """Return to menu"""
-                # self.return_to_menu()
-                print("Pas encore fait, il faut relancer le programme lol")
-                self.tournament_answer()
+                return
 
             elif response != "1" or "2" or "3" or "4" or "5":
                 print("ERREUR : Vous devez écrire 1, 2, 3, 4 ou 5")
@@ -105,13 +101,78 @@ class TournamentController:
         self.tournament_answer()
 
     def edit_tournament(self):
-        pass
+
+        print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
+        tournaments = self.load_tournament_data()
+        x = 1
+        y = 1
+
+        for tournament in tournaments:
+            print(f"{x} - {tournament["Nom"]}")
+            x += 1
+
+        what_tournament = int(input("Entrez le numéro associé au joueur à modifier : "))
+
+        print("---Fiche du joueur---")
+        for cle, valeur in tournaments[what_tournament - 1].items():
+            print(f"{y} - {cle}: {valeur}")
+            y += 1
+
+        what_data = input("Quelle donnée voulez-vous modifier parmis la liste ci-dessus : ")
+        new_data = input("Quelle nouvelle donnée voulez-vous afficher : ")
+
+        print(tournaments[what_tournament - 1])
+        for data_test in tournaments[what_tournament - 1].items():
+
+            try:
+                if what_data == "1":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Nom"] = new_data
+                elif what_data == "2":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Lieu"] = new_data
+                elif what_data == "3":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Date de début"] = new_data
+                elif what_data == "4":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Date de fin"] = new_data
+                elif what_data == "5":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Nombre de rounds"] = new_data
+                elif what_data == "6":
+                    change_tournament = tournaments[what_tournament - 1]
+                    change_tournament["Remarque du jury"] = new_data
+            except ValueError:
+                print("ValueError")
+
+        with open("data/tournament_data.json", "w") as f:
+            json.dump(tournaments, f, indent=2)
 
     def delete_tournament(self):
-        pass
 
-    def return_to_menu(self):
-        pass
+        print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
+        tournaments = self.load_tournament_data()
+        x = 1
+        y = 1
+        z = 1
+
+        for tournament in tournaments:
+            print(f"{x} - {tournament["Nom"]}")
+            x += 1
+
+        player_to_remove = int(input("Entrez le numéro associé au joueur à supprimer de la liste : "))
+
+        del tournaments[player_to_remove - 1]
+
+        print("---Le joueur a bien été supprimé de la liste, voici la nouvelle liste---")
+
+        for tournament in tournaments:
+            print(f"{z} - {tournament["Nom"]}")
+            z += 1
+
+        with open("data/tournament_data.json", "w") as f:
+            json.dump(tournaments, f, indent=2)
 
 
 test = TournamentController()

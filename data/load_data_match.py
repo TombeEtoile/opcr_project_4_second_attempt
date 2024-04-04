@@ -147,11 +147,3 @@ class LoadRoundData:
             players = json.loads(f.read())
 
             return players
-
-
-# player = LoadPlayerData
-# print(player.load_player_data())
-
-# round = LoadRoundData()
-# round.test_modification_json()
-# print(round.load_test())

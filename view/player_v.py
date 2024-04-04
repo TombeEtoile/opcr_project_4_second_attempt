@@ -165,5 +165,4 @@ class PlayerInstantiate:
                   "ID": identifier,
                   "Point": point}
 
-        print(player)
         return player

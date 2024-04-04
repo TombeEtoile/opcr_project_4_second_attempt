@@ -17,7 +17,8 @@ class MatchView:
                            "1 - Voir le classement des joueurs par elo,\n"
                            "2 - Voir le classement des joueurs par point de compétition,\n"
                            "3 - Entrer les résultats des tournois,\n"
+                           "4 - Retourner au menu\n"
 
-                           "Entrez 1, 2 ou 3 : ")
+                           "Entrez 1, 2, 3 ou 4 : ")
 
         return user_input

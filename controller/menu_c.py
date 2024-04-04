@@ -15,27 +15,29 @@ class MenuController:
 
     def menu_answer(self):
 
-        response = MenuView.menu_questions()
-
         try:
-            if response == "1":
-                self.call_player_c()
+            while 1:
+                response = MenuView.menu_questions()
 
-            elif response == "2":
-                self.call_tournament_c()
+                if response == "1":
+                    player = PlayerController()
+                    player.player_answer()
 
-            elif response == "3":
-                folder_and_file = CreatingFolderAndFile()
-                folder_and_file.folder_creation()
-                folder_and_file.json_creation()
-                self.call_match_c()
+                elif response == "2":
+                    self.call_tournament_c()
 
-            elif response == "4":
-                pass
+                elif response == "3":
+                    folder_and_file = CreatingFolderAndFile()
+                    folder_and_file.folder_creation()
+                    folder_and_file.json_creation()
+                    self.call_match_c()
 
-            elif response != "1" or "2" or "3" or "4":
-                print("ERREUR : Vous devez écrire 1, 2, 3 ou 4")
-                self.menu_answer()
+                elif response == "4":
+                    quit()
+
+                elif response != "1" or "2" or "3" or "4":
+                    print("ERREUR : Vous devez écrire 1, 2, 3 ou 4")
+                    self.menu_answer()
 
         except ValueError:
             print("ERREUR : Vous devez écrire 1, 2 ou 3")
@@ -70,12 +72,30 @@ class CreatingFolderAndFile:
         pass
 
     @staticmethod
+    def load_player_data():
+
+        with open("data/player_data.json") as f:
+            players = json.loads(f.read())
+
+            return players
+
+    @staticmethod
     def load_tournament_data():
 
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
 
             return tournaments
+
+    def load_player_name(self):
+
+        player_name = []
+
+        players = self.load_player_data()
+        for player in players:
+            player_name.append(player["Prenom"])
+
+        return player_name
 
     def load_tournament_name(self):
 
@@ -106,7 +126,7 @@ class CreatingFolderAndFile:
                             .replace("â", "a"))
 
             if not os.path.exists(f"data/{cleaner_name}"):
-                os.mkdir(f"data/{cleaner_name}")
+                os.makedirs(f"data/{cleaner_name}", exist_ok=True)
                 print(f"- Création du dossier {cleaner_name}")
 
             elif os.path.exists(f"data/{cleaner_name}"):
@@ -135,14 +155,28 @@ class CreatingFolderAndFile:
 
             for tournament_bis in range(int(round_number)):
 
-                if not os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}"):
-                    with open(f"data/{cleaner_name}/{cleaner_name}_{round_min}", "w") as f:
+                if not os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}.json"):
+                    with open(f"data/{cleaner_name}/{cleaner_name}_{round_min}.json", "w") as f:
                         data = []
                         json.dump(data, f, indent=2)
+                        f.flush()
 
-                        print(f"- Création du fichier {cleaner_name}_{round_min}")
+                        print(f"- Création du fichier {cleaner_name}_{round_min}.json")
 
-                elif os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}"):
-                    print(f"- Le fichier '{cleaner_name}/{cleaner_name}_{round_min}' existe déjà")
+                elif os.path.exists(f"data/{cleaner_name}/{cleaner_name}_{round_min}.json"):
+                    print(f"- Le fichier '{cleaner_name}/{cleaner_name}_{round_min}.json' existe déjà")
 
                 round_min += 1
+
+            for tournament_bis in range(int(round_number)):
+
+                if not os.path.exists(f"data/{cleaner_name}/player_data_{cleaner_name}.json"):
+                    with open(f"data/{cleaner_name}/player_data_{cleaner_name}.json", "w") as f:
+                        data = self.load_player_data()
+                        json.dump(data, f, indent=2)
+                        f.flush()
+
+                        print(f"- Création du fichier player_data_{cleaner_name}.json")
+
+                elif os.path.exists(f"data/{cleaner_name}/player_data_{cleaner_name}.json"):
+                    print(f"- Le fichier 'player_data_{cleaner_name}.json' existe déjà")
