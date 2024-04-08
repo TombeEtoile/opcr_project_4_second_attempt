@@ -1,8 +1,8 @@
 class TournamentView:
-    """ask for what the user want to for his player"""
 
     @staticmethod
     def tournament_questions():
+        """ask for what the user want to for his player"""
 
         print("\n==========INSTANCIATION D'UN TOURNOI==========\n")
 
@@ -172,7 +172,3 @@ class TournamentInstantiate:
                       "Remarque du jury": jury_remark}
 
         return tournament
-
-
-test = TournamentInstantiate
-# test.get_tournament_data()

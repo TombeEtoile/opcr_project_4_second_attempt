@@ -115,12 +115,16 @@ class RoundView:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
+
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
 
             return tournaments
 
     def load_tournament_name(self):
+        """Load only the name of tournaments"""
+
         tournaments_name = []
 
         tournaments = self.load_tournament_data()

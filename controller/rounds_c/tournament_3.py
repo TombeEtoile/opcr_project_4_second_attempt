@@ -8,6 +8,7 @@ class Tournament3:
 
     @staticmethod
     def tournament_3_question():
+        """user-selected routing from round_c"""
 
         tournaments = T3Data.load_tournament_data()
         t3 = tournaments[2]
@@ -54,6 +55,7 @@ class Tournament3:
                 print("ERREUR")
 
     def tournament_3_answer(self):
+        """user-selected routing from tournament_3_questions"""
 
         question = self.tournament_3_question()
 
@@ -85,6 +87,7 @@ class T3Data:
 
     @staticmethod
     def load_tournament_data():
+        """tournament data"""
 
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
@@ -93,6 +96,7 @@ class T3Data:
 
     @staticmethod
     def load_players_data():
+        """Player data"""
 
         with open("data/player_data.json") as f:
             players = json.loads(f.read())
@@ -100,6 +104,7 @@ class T3Data:
             return players
 
     def load_player_name(self):
+        """Player data name"""
 
         player_name = []
 
@@ -110,6 +115,7 @@ class T3Data:
         return player_name
 
     def load_player_tournament_data(self):
+        """Tournament data from tournament_3 folder"""
 
         with open(f"data/{self.clean_tournament_name()}/player_data_{self.clean_tournament_name()}.json") as f:
             players = json.loads(f.read())
@@ -117,6 +123,7 @@ class T3Data:
             return players
 
     def clean_tournament_name(self):
+        """Clean tournament 3 name"""
 
         tournaments = self.load_tournament_data()
         for tournament in tournaments:
@@ -144,13 +151,14 @@ class T3Round1:
 
     @staticmethod
     def tri_player_by_elo():
-        """Tri par point elo"""
+        """Players sorted by elo point"""
 
         data = T3Data.load_players_data()
 
         return sorted(data, key=lambda x: x["Elo"])
 
     def elo_pair(self):
+        """Creat elo pair"""
 
         pairs = []
         player_list = self.tri_player_by_elo()
@@ -167,7 +175,7 @@ class T3Round1:
         return pairs
 
     def result_round(self):
-        """Round 1 results"""
+        """Round 3 results"""
 
         winner = []
         loser = []
@@ -220,7 +228,7 @@ class T3Round1:
         return round_1_result
 
     def point_distribution(self):
-        """Distribution des points"""
+        """Points distribution"""
 
         result_match = self.result_round()
         all_players = T3Data().load_players_data()
@@ -251,13 +259,14 @@ class T3OtherRounds:
 
     @staticmethod
     def tri_player_by_point():
-        """Tri par point compétion"""
+        """Players sorted by point"""
 
         data = T3Data().load_player_tournament_data()
 
         return sorted(data, key=lambda x: x["Point"])
 
     def point_pair(self):
+        """Creat pari of players by point"""
 
         pairs = []
         player_list = self.tri_player_by_point()
@@ -326,7 +335,7 @@ class T3OtherRounds:
         return round_1_result
 
     def point_distribution(self):
-        """Distribution des points"""
+        """Points distribution"""
 
         result_match = self.result_round()
         all_players = T3Data().load_player_tournament_data()
@@ -356,29 +365,7 @@ class T3OtherRounds:
                     x += 1
 
         except ValueError:
-            print("WTFFFF")
+            print("ERROR")
 
         with open(f"data/{tournaments}/player_data_{tournaments}.json", "w") as d:
             json.dump(all_players, d, indent=2)
-
-
-tournament3 = Tournament3()
-# tournament3.tournament_3_question()
-# tournament3.tournament_3_answer()
-
-t3round1 = T3Round1()
-# print(f"tri_player_by_elo() = {t3round1.tri_player_by_elo()}")
-# print(f"elo_pair() = {t3round1.elo_pair()}")
-# t3round1.elo_pair_to_json()
-# print(f"result_round() = {t3round1.result_round()}")
-# t3round1.point_distribution()
-
-other_rounds = T3OtherRounds()
-# print(f"tri_player_by_point() = {other_rounds.tri_player_by_point()}")
-# print(f"point_pair() = {other_rounds.point_pair()}")
-# other_rounds.point_pair_to_json()
-
-# point_distribution = PointDistribution()
-# point_distribution.result_round()
-# print(point_distribution.list_for_point_distribution())
-# point_distribution.point_distribution()

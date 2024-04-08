@@ -3,10 +3,10 @@ import string
 
 
 class PlayerView:
-    """ask for what the user want to for his player"""
 
     @staticmethod
     def player_questions():
+        """ask for what the user want to for his player"""
 
         print("\n==========INSTANCIATION D'UN JOUEUR==========\n")
 

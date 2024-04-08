@@ -8,6 +8,7 @@ class Tournament1:
 
     @staticmethod
     def tournament_1_question():
+        """user-selected routing from round_c"""
 
         tournaments = T1Data.load_tournament_data()
         t1 = tournaments[0]
@@ -53,6 +54,7 @@ class Tournament1:
                 print("ERREUR")
 
     def tournament_1_answer(self):
+        """user-selected routing from tournament_1_question"""
 
         question = self.tournament_1_question()
         print(question)
@@ -85,6 +87,7 @@ class T1Data:
 
     @staticmethod
     def load_tournament_data():
+        """tournament data"""
 
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
@@ -93,6 +96,7 @@ class T1Data:
 
     @staticmethod
     def load_players_data():
+        """Player data"""
 
         with open("data/player_data.json") as f:
             players = json.loads(f.read())
@@ -100,6 +104,7 @@ class T1Data:
             return players
 
     def load_player_name(self):
+        """Player data name"""
 
         player_name = []
 
@@ -110,6 +115,7 @@ class T1Data:
         return player_name
 
     def load_player_tournament_data(self):
+        """Tournament data from tournament_1 folder"""
 
         with open(f"data/{self.clean_tournament_name()}/player_data_{self.clean_tournament_name()}.json") as f:
             players = json.loads(f.read())
@@ -117,6 +123,7 @@ class T1Data:
             return players
 
     def clean_tournament_name(self):
+        """Clean tournament 1 name"""
 
         tournaments = self.load_tournament_data()
         for tournament in tournaments:
@@ -144,13 +151,14 @@ class T1Round1:
 
     @staticmethod
     def tri_player_by_elo():
-        """Tri par point elo"""
+        """Players sorted by elo point"""
 
         data = T1Data.load_players_data()
 
         return sorted(data, key=lambda x: x["Elo"])
 
     def elo_pair(self):
+        """Creat elo pair"""
 
         pairs = []
         player_list = self.tri_player_by_elo()
@@ -220,7 +228,7 @@ class T1Round1:
         return round_1_result
 
     def point_distribution(self):
-        """Distribution des points"""
+        """Points distribution"""
 
         result_match = self.result_round()
         all_players = T1Data().load_players_data()
@@ -251,13 +259,14 @@ class T1OtherRounds:
 
     @staticmethod
     def tri_player_by_point():
-        """Tri par point compétion"""
+        """Players sorted by point"""
 
         data = T1Data().load_player_tournament_data()
 
         return sorted(data, key=lambda x: x["Point"])
 
     def point_pair(self):
+        """Creat pari of players by point"""
 
         pairs = []
         player_list = self.tri_player_by_point()
@@ -326,7 +335,7 @@ class T1OtherRounds:
         return round_1_result
 
     def point_distribution(self):
-        """Distribution des points"""
+        """Points distribution"""
 
         result_match = self.result_round()
         all_players = T1Data().load_player_tournament_data()
@@ -356,7 +365,7 @@ class T1OtherRounds:
                     x += 1
 
         except ValueError:
-            print("WTFFFF")
+            print("ERROR")
 
         with open(f"data/{tournaments}/player_data_{tournaments}.json", "w") as d:
             json.dump(all_players, d, indent=2)

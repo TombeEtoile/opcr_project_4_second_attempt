@@ -24,10 +24,9 @@ class ReviewView:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
+
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
 
             return tournaments
-
-
-resume_view = ReviewView()

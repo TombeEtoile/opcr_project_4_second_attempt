@@ -12,6 +12,7 @@ class RoundController:
         pass
 
     def pre_round_answer(self):
+        """user-selected routing from the round_v"""
 
         answer = RoundView().pre_round_questions()
 
@@ -41,6 +42,7 @@ class RoundController:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
 
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
@@ -48,6 +50,7 @@ class RoundController:
             return tournaments
 
     def load_tournament_name(self):
+        """Load the name of tournaments data"""
 
         tournaments_name = []
 

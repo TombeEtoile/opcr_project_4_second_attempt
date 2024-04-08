@@ -1,6 +1,5 @@
 from view.match_v import MatchView
 from controller.round_c import RoundController
-from data.load_data_match import LoadPlayerData
 from controller.review_c import ReviewController
 
 
@@ -10,6 +9,7 @@ class MatchController:
         pass
 
     def match_answer(self):
+        """user-selected routing from the match_v"""
 
         try:
             while 1:
@@ -35,11 +35,8 @@ class MatchController:
 
     @staticmethod
     def call_round_c():
+        """Call round_c"""
 
         round_c = RoundController()
 
         return round_c.pre_round_answer()
-
-
-test = MatchController()
-# test.match_answer()

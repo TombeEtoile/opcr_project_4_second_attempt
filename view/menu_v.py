@@ -3,6 +3,7 @@ class MenuView:
 
     @staticmethod
     def menu_questions():
+        """Question of the general menu"""
 
         print("\n==========MENU GÉNÉRAL==========\n")
 

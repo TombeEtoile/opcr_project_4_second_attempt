@@ -9,6 +9,7 @@ class PlayerController:
         pass
 
     def player_answer(self):
+        """user-selected routing from the player_v"""
 
         response = PlayerView.player_questions()
 
@@ -45,6 +46,7 @@ class PlayerController:
 
     @staticmethod
     def load_player_data():
+        """Load player data"""
 
         with open("data/player_data.json") as f:
             players = json.loads(f.read())
@@ -52,6 +54,7 @@ class PlayerController:
             return players
 
     def add_player(self):
+        """Add a player in player_data.json"""
 
         new_player = PlayerInstantiate.get_player_data()
 
@@ -70,9 +73,9 @@ class PlayerController:
         self.player_answer()
 
     def list_all_players(self):
+        """List all the players from player_data.json"""
 
         players = self.load_player_data()
-        print(players)
         for number in range(len(players)):
             print("\n---Joueur n°{} - {} {}---\n"
                   "-est né le {}\n"
@@ -90,6 +93,7 @@ class PlayerController:
         self.player_answer()
 
     def edit_player(self):
+        """Call player_data.json to edit the players"""
 
         print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
         players = self.load_player_data()
@@ -141,6 +145,7 @@ class PlayerController:
             f.flush()
 
     def delete_player(self):
+        """Call player_data.json to delete a player"""
 
         print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
 
@@ -165,9 +170,3 @@ class PlayerController:
         with open("data/player_data.json", "w") as f:
             json.dump(players, f, indent=2)
             f.flush()
-
-
-test = PlayerController()
-# test.player_answer()
-# test.add_player()
-# test.list_all_players()

@@ -9,6 +9,7 @@ class TournamentController:
         pass
 
     def tournament_answer(self):
+        """user-selected routing from the tournament_v"""
 
         response = TournamentView.tournament_questions()
 
@@ -45,6 +46,7 @@ class TournamentController:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
 
         with open("data/tournament_data.json") as f:
             players = json.loads(f.read())
@@ -52,6 +54,7 @@ class TournamentController:
             return players
 
     def add_tournament(self):
+        """Add a tournament in tournament_data.json"""
 
         print(len(self.load_tournament_data()))
         new_tournament = TournamentInstantiate.get_tournament_data()
@@ -82,6 +85,7 @@ class TournamentController:
             self.tournament_answer()
 
     def list_all_tournament(self):
+        """List all the tournaments from tournament_data.json"""
 
         tournaments = self.load_tournament_data()
         for tournament in range(len(tournaments)):
@@ -101,6 +105,7 @@ class TournamentController:
         self.tournament_answer()
 
     def edit_tournament(self):
+        """Call tournament_data.json to edit the tournaments"""
 
         print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
         tournaments = self.load_tournament_data()
@@ -150,6 +155,7 @@ class TournamentController:
             json.dump(tournaments, f, indent=2)
 
     def delete_tournament(self):
+        """Call tournament_data.json to delete a tournament"""
 
         print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
         tournaments = self.load_tournament_data()
@@ -173,7 +179,3 @@ class TournamentController:
 
         with open("data/tournament_data.json", "w") as f:
             json.dump(tournaments, f, indent=2)
-
-
-test = TournamentController()
-# test.add_tournament()

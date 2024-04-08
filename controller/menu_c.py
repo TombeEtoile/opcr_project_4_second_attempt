@@ -8,7 +8,7 @@ from controller.match_c import MatchController
 
 
 class MenuController:
-    """Directs the user to the section of their choice"""
+    """user-selected routing from the menu_v"""
 
     def __init__(self):
         pass
@@ -45,6 +45,7 @@ class MenuController:
 
     @staticmethod
     def call_player_c():
+        """Call player_c"""
 
         player = PlayerController()
 
@@ -52,6 +53,7 @@ class MenuController:
 
     @staticmethod
     def call_tournament_c():
+        """Call tournament_c"""
 
         tournament = TournamentController()
 
@@ -59,6 +61,7 @@ class MenuController:
 
     @staticmethod
     def call_match_c():
+        """Call match_c"""
 
         match = MatchController()
 
@@ -73,6 +76,7 @@ class CreatingFolderAndFile:
 
     @staticmethod
     def load_player_data():
+        """Load player data"""
 
         with open("data/player_data.json") as f:
             players = json.loads(f.read())
@@ -81,6 +85,7 @@ class CreatingFolderAndFile:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
 
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
@@ -88,6 +93,7 @@ class CreatingFolderAndFile:
             return tournaments
 
     def load_player_name(self):
+        """Load the name of all the players"""
 
         player_name = []
 
@@ -98,6 +104,7 @@ class CreatingFolderAndFile:
         return player_name
 
     def load_tournament_name(self):
+        """Call the name of all the tournaments"""
 
         tournaments_name = []
 
@@ -108,6 +115,7 @@ class CreatingFolderAndFile:
         return tournaments_name
 
     def folder_creation(self):
+        """Creat one folder for each tournament in tournament_data"""
 
         tournaments = self.load_tournament_data()
         for tournament in tournaments:
@@ -133,6 +141,8 @@ class CreatingFolderAndFile:
                 print(f"- Le dossier '{cleaner_name}' existe déjà")
 
     def json_creation(self):
+        """Creat one Json for all round of each tournament in tournament data,
+        and place it in the appropriate folder"""
 
         tournaments = self.load_tournament_data()
         for tournament in tournaments:

@@ -10,6 +10,7 @@ class ReviewController:
         pass
 
     def general_responses(self):
+        """user-selected routing from the review_v"""
 
         user_input = ReviewView().general_information()
 
@@ -41,6 +42,8 @@ class ReviewController:
 
     @staticmethod
     def load_tournament_data():
+        """Load tournament data"""
+
         with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
 
@@ -54,6 +57,7 @@ class ReviewT1:
 
     @staticmethod
     def clean_tournament_1():
+        """Clean the tournament 1 name"""
 
         tournaments = ReviewController.load_tournament_data()[0]
 
@@ -74,6 +78,7 @@ class ReviewT1:
         return cleaner_name
 
     def load_tournament_1(self):
+        """Load data from tournament 1"""
 
         with open(f"data/{self.clean_tournament_1()}/player_data_{self.clean_tournament_1()}.json") as f:
             players = json.loads(f.read())
@@ -81,6 +86,7 @@ class ReviewT1:
             return players
 
     def print_tournament_1(self):
+        """Print the tournament 1 result sorted by point"""
 
         players = self.load_tournament_1()
 
@@ -107,6 +113,7 @@ class ReviewT2:
 
     @staticmethod
     def clean_tournament_2():
+        """Clean the tournament 2 name"""
 
         tournaments = ReviewController.load_tournament_data()[1]
 
@@ -127,6 +134,7 @@ class ReviewT2:
         return cleaner_name
 
     def load_tournament_2(self):
+        """Load data from tournament 2"""
 
         with open(f"data/{self.clean_tournament_2()}/player_data_{self.clean_tournament_2()}.json") as f:
             players = json.loads(f.read())
@@ -134,6 +142,7 @@ class ReviewT2:
             return players
 
     def print_tournament_2(self):
+        """Print the tournament 1 result sorted by point"""
 
         players = self.load_tournament_2()
 
@@ -160,6 +169,7 @@ class ReviewT3:
 
     @staticmethod
     def clean_tournament_3():
+        """Clean the tournament 3 name"""
 
         tournaments = ReviewController.load_tournament_data()[2]
 
@@ -180,20 +190,15 @@ class ReviewT3:
         return cleaner_name
 
     def load_tournament_3(self):
+        """Load data from tournament 3"""
 
         with open(f"data/{self.clean_tournament_3()}/player_data_{self.clean_tournament_3()}.json") as f:
             players = json.loads(f.read())
 
             return players
 
-    def ranking_result(self):
-        # see ranking of all players
-
-        result = self.load_tournament_3()
-
-        return reversed(sorted(result, key=lambda x: x["Point"]))
-
     def print_tournament_3(self):
+        """Print the tournament 1 result sorted by point"""
 
         players = self.load_tournament_3()
 
@@ -211,15 +216,3 @@ class ReviewT3:
                    players[number].get("ID"),
                    players[number].get("Elo"),
                    players[number].get("Point")))
-
-
-resume_controller = ReviewController()
-
-t1 = ReviewT1()
-# t1.print_tournament_1()
-
-t2 = ReviewT2()
-# t2.print_tournament_2()
-
-t3 = ReviewT3()
-# t3.print_tournament_3()
