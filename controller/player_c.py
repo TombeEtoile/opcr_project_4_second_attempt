@@ -99,7 +99,6 @@ class PlayerController:
         players = self.load_player_data()
         x = 1
         y = 1
-        z = 1
 
         for player in players:
             print(f"{x} - {player["Prenom"]}")

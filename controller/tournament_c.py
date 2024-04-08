@@ -160,7 +160,6 @@ class TournamentController:
         print("Quel joueur voulez-vous modifier parmis la liste ci-dessous :")
         tournaments = self.load_tournament_data()
         x = 1
-        y = 1
         z = 1
 
         for tournament in tournaments:

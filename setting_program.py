@@ -1,7 +1,5 @@
 import json
 
-from controller.menu_c import MenuController
-
 
 class SetUpJson:
 

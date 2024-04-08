@@ -122,7 +122,7 @@ class LoadRoundData:
                        player[number].get("Nom"),
                        player[number].get("Elo"),
                        player[number].get("Point"),
-
+                       # Séparation
                        player[number + 1].get("Prenom"),
                        player[number + 1].get("Nom"),
                        player[number + 1].get("Elo"),
