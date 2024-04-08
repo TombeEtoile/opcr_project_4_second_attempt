@@ -1,6 +1,3 @@
-import json
-
-
 class MatchView:
 
     def __init__(self):
