@@ -15,6 +15,6 @@ class MatchView:
                            "2 - Entrer les résultats des tournois,\n"
                            "3 - Retourner au menu\n"
 
-                           "Entrez 1, 2, 3 ou 4 : ")
+                           "Entrez 1, 2 ou 3 : ")
 
         return user_input

@@ -92,12 +92,11 @@ class ReviewT1:
 
         print(f"\n====={self.clean_tournament_1()}=====")
         for number in range(len(players)):
-            print("\n---{}er/ème - {} {}---\n"
+            print("\n---{} {}---\n"
                   "-est né le {}\n"
                   "-son ID est {}\n"
                   "-possède {} points elo\n"
                   "-possède actuellement {} points de tournoi".format(
-                   number + 1,
                    players[number].get("Prenom"),
                    players[number].get("Nom"),
                    players[number].get("Date de naissance"),
