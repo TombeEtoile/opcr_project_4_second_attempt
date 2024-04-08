@@ -1,6 +1,7 @@
 from view.match_v import MatchView
 from controller.round_c import RoundController
 from data.load_data_match import LoadPlayerData
+from controller.review_c import ReviewController
 
 
 class MatchController:
@@ -15,17 +16,12 @@ class MatchController:
                 answer = MatchView.match_questions()
 
                 if answer == "1":
-                    LoadPlayerData.list_player_by_elo()
-                    self.match_answer()
+                    ReviewController().general_responses()
 
                 elif answer == "2":
-                    LoadPlayerData.list_player_by_point()
-                    self.match_answer()
-
-                elif answer == "3":
                     self.call_round_c()
 
-                elif answer == "4":
+                elif answer == "3":
                     """Retourner au menu"""
                     return
 

@@ -16,20 +16,23 @@ class ReviewController:
         try:
             if user_input == "1":
                 """Call fonction to see a player's result"""
-                self.player_result()
+                ReviewT1().print_tournament_1()
                 self.general_responses()
 
             elif user_input == "2":
                 """Call fonction to see round 1 results"""
-                print(self.all_rounds_result())
+                ReviewT2().print_tournament_2()
                 self.general_responses()
 
             elif user_input == "3":
                 """Pass to end the tournament"""
-                print("Le tournois est terminé !")
-                pass
+                ReviewT3().print_tournament_3()
+                self.general_responses()
 
-            elif user_input != "1" or "2" or "3":
+            elif user_input == "4":
+                return
+
+            elif user_input != "1" or "2" or "3" or "4":
                 print("ERREUR : Votre réponse n'est pas valable.")
                 self.general_responses()
 
@@ -38,7 +41,7 @@ class ReviewController:
 
     @staticmethod
     def load_tournament_data():
-        with open("../data/tournament_data.json") as f:
+        with open("data/tournament_data.json") as f:
             tournaments = json.loads(f.read())
 
             return tournaments
@@ -72,7 +75,7 @@ class ReviewT1:
 
     def load_tournament_1(self):
 
-        with open(f"../data/{self.clean_tournament_1()}/player_data_{self.clean_tournament_1()}.json") as f:
+        with open(f"data/{self.clean_tournament_1()}/player_data_{self.clean_tournament_1()}.json") as f:
             players = json.loads(f.read())
 
             return players
@@ -125,7 +128,7 @@ class ReviewT2:
 
     def load_tournament_2(self):
 
-        with open(f"../data/{self.clean_tournament_2()}/player_data_{self.clean_tournament_2()}.json") as f:
+        with open(f"data/{self.clean_tournament_2()}/player_data_{self.clean_tournament_2()}.json") as f:
             players = json.loads(f.read())
 
             return players
@@ -178,7 +181,7 @@ class ReviewT3:
 
     def load_tournament_3(self):
 
-        with open(f"../data/{self.clean_tournament_3()}/player_data_{self.clean_tournament_3()}.json") as f:
+        with open(f"data/{self.clean_tournament_3()}/player_data_{self.clean_tournament_3()}.json") as f:
             players = json.loads(f.read())
 
             return players
@@ -192,10 +195,10 @@ class ReviewT3:
 
     def print_tournament_3(self):
 
-        players = self.ranking_result()
+        players = self.load_tournament_3()
 
         print(f"\n====={self.clean_tournament_3()}=====")
-        for number in range(len(self.load_tournament_3())):
+        for number in range(len(players)):
             print("\n---{}er/ème - {} {}---\n"
                   "-est né le {}\n"
                   "-son ID est {}\n"
@@ -213,10 +216,10 @@ class ReviewT3:
 resume_controller = ReviewController()
 
 t1 = ReviewT1()
-t1.print_tournament_1()
+# t1.print_tournament_1()
 
 t2 = ReviewT2()
-t2.print_tournament_2()
+# t2.print_tournament_2()
 
 t3 = ReviewT3()
-t3.print_tournament_3()
+# t3.print_tournament_3()
