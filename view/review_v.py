@@ -17,7 +17,7 @@ class ReviewView:
                 print("Sélectionnez les données que vous souhaitez analyser : ")
 
                 return input(f"1 - voir les résultats du tournois n°{x} - {tournament_1["Nom"]}\n"
-                             "2 - Retourner au menu \n"
+                             "Out - Retourner au menu \n"
                              "Tapez 1 ou 2 : ")
 
             elif len(self.load_tournament_data()) == 2:
@@ -29,7 +29,7 @@ class ReviewView:
 
                 return input(f"1 - voir les résultats du tournois n°{x} - {tournament_1["Nom"]}\n"
                              f"2 - voir les résultats du tournois n°{x + 1} - {tournament_2["Nom"]} \n"
-                             "3 - Retourner au menu \n"
+                             "Out - Retourner au menu \n"
                              "Tapez 1, 2 ou 3 : ")
 
             elif len(self.load_tournament_data()) == 3:
@@ -44,7 +44,7 @@ class ReviewView:
                 return input(f"1 - voir les résultats du tournois n°{x} - {tournament_1["Nom"]}\n"
                              f"2 - voir les résultats du tournois n°{x + 1} - {tournament_2["Nom"]} \n"
                              f"3 - voir les résultats du tournois n°{x + 2} - {tournament_3["Nom"]} \n"
-                             "4 - Retourner au menu \n"
+                             "Out - Retourner au menu \n"
                              "Tapez 1, 2, 3 ou 4 : ")
 
         except ValueError:

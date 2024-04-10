@@ -30,10 +30,10 @@ class ReviewController:
                 ReviewT3().print_tournament_3()
                 self.general_responses()
 
-            elif user_input == "4":
+            elif user_input == "Out":
                 return
 
-            elif user_input != "1" or "2" or "3" or "4":
+            elif user_input != "1" or "2" or "3" or "Out":
                 print("ERREUR : Votre réponse n'est pas valable.")
                 self.general_responses()
 
