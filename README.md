@@ -22,10 +22,22 @@ cd projet_4_bis
 python3 main.py
 ```
 
+#### Requirements.txt :
+flake8==7.0.0
 
-## librairies extérieurs : 
-- from typing import List
-- import json
+flake8-html==0.4.3
+
+Jinja2==3.1.3
+
+MarkupSafe==2.1.5
+
+mccabe==0.7.0
+
+pycodestyle==2.11.1
+
+pyflakes==3.2.0
+
+Pygments==2.17.2
 
 
 ## Utilisation : 
