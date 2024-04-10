@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: view/review_v.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="view.review_v.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               view/review_v.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  9
+               </span>
+               <strong>E501:</strong> line too long (80 > 79 characters)
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l17">
+                  <tt><i>17</i>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sélectionnez les données que vous souhaitez analyser : &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l19">
+                  <tt><i>19</i>                 <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_1</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l28">
+                  <tt><i>28</i>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sélectionnez les données que vous souhaitez analyser : &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l30">
+                  <tt><i>30</i>                 <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_1</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (103 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l31">
+                  <tt><i>31</i>                              <span class="sa">f</span><span class="s2">&quot;2 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_2</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l42">
+                  <tt><i>42</i>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sélectionnez les données que vous souhaitez analyser : &quot;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l44">
+                  <tt><i>44</i>                 <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_1</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (103 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l45">
+                  <tt><i>45</i>                              <span class="sa">f</span><span class="s2">&quot;2 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_2</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (103 > 79 characters):</p>
+               
+               <a href="view.review_v.source.html#l46">
+                  <tt><i>46</i>                              <span class="sa">f</span><span class="s2">&quot;3 - voir les résultats du tournois n°</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">tournament_3</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>
